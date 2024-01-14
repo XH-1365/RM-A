@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "string": "c",
+        "memory_resource": "c"
+    }
+}
