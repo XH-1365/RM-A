@@ -18,12 +18,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "can.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -55,7 +56,10 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+uint8_t Txst1[] = "hello word\r\n";
+uint8_t TX_data[8] = {0X20, 0X00, 0X20, 0X00, 0X20, 0X00, 0X20, 0X00};   //创建用于存放所发送数据的数组
+uint32_t mailbox;                               //作为SendMessage的参数，返回数据存放的邮箱
+CAN_TxHeaderTypeDef Tx_Header;                  //定义Tx为can的配置
 /* USER CODE END 0 */
 
 /**
@@ -87,21 +91,37 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART2_UART_Init();
+  MX_CAN1_Init();
   /* USER CODE BEGIN 2 */
 
-  /* USER CODE END 2 */
+  //HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin);
 
+  HAL_CAN_Start(&hcan1);//初始化can
+  //--以下是对24V的电源口进行高电平
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_2, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_3, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_4, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOH, GPIO_PIN_5, GPIO_PIN_SET);
+	//串口发送
+  HAL_UART_Transmit(&huart2,Txst1,sizeof(Txst1),10000);
+  /* USER CODE END 2 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    Tx_Header.StdId = 0x200;
+    Tx_Header.ExtId = 0;
+    Tx_Header.IDE = CAN_ID_STD;
+    Tx_Header.RTR=CAN_RTR_DATA;
+    Tx_Header.DLC=8;
+    Tx_Header.TransmitGlobalTime = DISABLE;
+    
     /* USER CODE END WHILE */
-
+     HAL_CAN_AddTxMessage(&hcan1,&Tx_Header,TX_data,&mailbox);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }
-
 /**
   * @brief System Clock Configuration
   * @retval None
