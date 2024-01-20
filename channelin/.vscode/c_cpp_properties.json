@@ -3,12 +3,18 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**"//添加头文件study/RM-A/channelin/APP
             ],
             "defines": [
                 "USE_HAL_DRIVER",
                 "STM32F427xx"
             ],
+            "browse":{
+                "path": [
+                   // "${workspaceFolder}/channelin/"
+                ]
+
+            },
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "gnu++17",

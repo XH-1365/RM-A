@@ -1,4 +1,4 @@
-ARM GAS  /tmp/ccuSoen0.s 			page 1
+ARM GAS  /tmp/ccjaXM34.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
   28:Core/Src/can.c **** 
   29:Core/Src/can.c **** /* CAN1 init function */
   30:Core/Src/can.c **** void MX_CAN1_Init(void)
-ARM GAS  /tmp/ccuSoen0.s 			page 2
+ARM GAS  /tmp/ccjaXM34.s 			page 2
 
 
   31:Core/Src/can.c **** {
@@ -118,7 +118,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
   66              		.loc 1 47 25 is_stmt 0 view .LVU16
   67 0020 0122     		movs	r2, #1
   68 0022 4276     		strb	r2, [r0, #25]
-ARM GAS  /tmp/ccuSoen0.s 			page 3
+ARM GAS  /tmp/ccjaXM34.s 			page 3
 
 
   48:Core/Src/can.c ****   hcan1.Init.AutoWakeUp = ENABLE;
@@ -178,7 +178,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
  110              		.fpu fpv4-sp-d16
  112              	HAL_CAN_MspInit:
  113              	.LVL2:
-ARM GAS  /tmp/ccuSoen0.s 			page 4
+ARM GAS  /tmp/ccjaXM34.s 			page 4
 
 
  114              	.LFB135:
@@ -238,7 +238,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
   84:Core/Src/can.c ****     HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
   85:Core/Src/can.c **** 
   86:Core/Src/can.c ****     /* CAN1 interrupt Init */
-ARM GAS  /tmp/ccuSoen0.s 			page 5
+ARM GAS  /tmp/ccjaXM34.s 			page 5
 
 
   87:Core/Src/can.c ****     HAL_NVIC_SetPriority(CAN1_RX0_IRQn, 0, 0);
@@ -298,7 +298,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
  182              		.loc 1 74 5 view .LVU48
  183 0040 1B6B     		ldr	r3, [r3, #48]
  184 0042 03F00803 		and	r3, r3, #8
-ARM GAS  /tmp/ccuSoen0.s 			page 6
+ARM GAS  /tmp/ccjaXM34.s 			page 6
 
 
  185 0046 0293     		str	r3, [sp, #8]
@@ -358,7 +358,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
  224 0070 D2E7     		b	.L7
  225              	.L12:
  226 0072 00BF     		.align	2
-ARM GAS  /tmp/ccuSoen0.s 			page 7
+ARM GAS  /tmp/ccjaXM34.s 			page 7
 
 
  227              	.L11:
@@ -418,7 +418,7 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
  114:Core/Src/can.c ****   /* USER CODE BEGIN CAN1_MspDeInit 1 */
  115:Core/Src/can.c **** 
  116:Core/Src/can.c ****   /* USER CODE END CAN1_MspDeInit 1 */
-ARM GAS  /tmp/ccuSoen0.s 			page 8
+ARM GAS  /tmp/ccjaXM34.s 			page 8
 
 
  117:Core/Src/can.c ****   }
@@ -478,25 +478,25 @@ ARM GAS  /tmp/ccuSoen0.s 			page 1
  310              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_cortex.h"
  311              		.file 9 "Core/Inc/main.h"
  312              		.file 10 "Core/Inc/can.h"
-ARM GAS  /tmp/ccuSoen0.s 			page 9
+ARM GAS  /tmp/ccjaXM34.s 			page 9
 
 
-ARM GAS  /tmp/ccuSoen0.s 			page 10
+ARM GAS  /tmp/ccjaXM34.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 can.c
-     /tmp/ccuSoen0.s:18     .text.MX_CAN1_Init:0000000000000000 $t
-     /tmp/ccuSoen0.s:26     .text.MX_CAN1_Init:0000000000000000 MX_CAN1_Init
-     /tmp/ccuSoen0.s:99     .text.MX_CAN1_Init:000000000000003c $d
-     /tmp/ccuSoen0.s:105    .text.HAL_CAN_MspInit:0000000000000000 $t
-     /tmp/ccuSoen0.s:112    .text.HAL_CAN_MspInit:0000000000000000 HAL_CAN_MspInit
-     /tmp/ccuSoen0.s:228    .text.HAL_CAN_MspInit:0000000000000074 $d
-     /tmp/ccuSoen0.s:234    .text.HAL_CAN_MspDeInit:0000000000000000 $t
-     /tmp/ccuSoen0.s:241    .text.HAL_CAN_MspDeInit:0000000000000000 HAL_CAN_MspDeInit
-     /tmp/ccuSoen0.s:288    .text.HAL_CAN_MspDeInit:0000000000000028 $d
-     /tmp/ccuSoen0.s:300    .bss.hcan1:0000000000000000 hcan1
-     /tmp/ccuSoen0.s:296    .bss.hcan1:0000000000000000 $d
+     /tmp/ccjaXM34.s:18     .text.MX_CAN1_Init:0000000000000000 $t
+     /tmp/ccjaXM34.s:26     .text.MX_CAN1_Init:0000000000000000 MX_CAN1_Init
+     /tmp/ccjaXM34.s:99     .text.MX_CAN1_Init:000000000000003c $d
+     /tmp/ccjaXM34.s:105    .text.HAL_CAN_MspInit:0000000000000000 $t
+     /tmp/ccjaXM34.s:112    .text.HAL_CAN_MspInit:0000000000000000 HAL_CAN_MspInit
+     /tmp/ccjaXM34.s:228    .text.HAL_CAN_MspInit:0000000000000074 $d
+     /tmp/ccjaXM34.s:234    .text.HAL_CAN_MspDeInit:0000000000000000 $t
+     /tmp/ccjaXM34.s:241    .text.HAL_CAN_MspDeInit:0000000000000000 HAL_CAN_MspDeInit
+     /tmp/ccjaXM34.s:288    .text.HAL_CAN_MspDeInit:0000000000000028 $d
+     /tmp/ccjaXM34.s:300    .bss.hcan1:0000000000000000 hcan1
+     /tmp/ccjaXM34.s:296    .bss.hcan1:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 HAL_CAN_Init

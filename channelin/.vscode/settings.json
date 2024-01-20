@@ -1,5 +1,14 @@
 {
+
+    "cortex-debug.openocdPath":"/usr/bin/openocd",
+    "cortex-debug.gdbPath":"/home/yellow/study/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+
+
     "files.associations": {
-        "can.h": "c"
-    }
+        "can.h": "c",
+        "main.h": "c"
+    
+    },
+
+
 }
