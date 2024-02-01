@@ -1,0 +1,308 @@
+ARM GAS  /tmp/ccQ9Cg8q.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Motor_drive.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.can_filter_init,"ax",%progbits
+  20              		.align	1
+  21              		.global	can_filter_init
+  22              		.syntax unified
+  23              		.thumb
+  24              		.thumb_func
+  26              	can_filter_init:
+  27              	.LFB134:
+  28              		.file 1 "Drivers/APP/Motor_drive.c"
+   1:Drivers/APP/Motor_drive.c **** #include "Chassis_Proc.h"
+   2:Drivers/APP/Motor_drive.c **** 
+   3:Drivers/APP/Motor_drive.c ****  uint8_t TX_data[8] = {0X03, 0X00,};             //创建用于存放所发送数据的数组
+   4:Drivers/APP/Motor_drive.c ****  void can_filter_init(void)
+   5:Drivers/APP/Motor_drive.c ****  {
+  29              		.loc 1 5 2 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 40
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 10B5     		push	{r4, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 8
+  36              		.cfi_offset 4, -8
+  37              		.cfi_offset 14, -4
+  38 0002 8AB0     		sub	sp, sp, #40
+  39              	.LCFI1:
+  40              		.cfi_def_cfa_offset 48
+   6:Drivers/APP/Motor_drive.c ****      CAN_FilterTypeDef can_filter_st;
+  41              		.loc 1 6 6 view .LVU1
+   7:Drivers/APP/Motor_drive.c **** 
+   8:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterActivation = ENABLE;
+  42              		.loc 1 8 6 view .LVU2
+  43              		.loc 1 8 37 is_stmt 0 view .LVU3
+  44 0004 0122     		movs	r2, #1
+  45 0006 0892     		str	r2, [sp, #32]
+   9:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterMode = CAN_FILTERMODE_IDMASK;
+  46              		.loc 1 9 6 is_stmt 1 view .LVU4
+  47              		.loc 1 9 31 is_stmt 0 view .LVU5
+  48 0008 0023     		movs	r3, #0
+  49 000a 0693     		str	r3, [sp, #24]
+ARM GAS  /tmp/ccQ9Cg8q.s 			page 2
+
+
+  10:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterScale = CAN_FILTERSCALE_32BIT;
+  50              		.loc 1 10 6 is_stmt 1 view .LVU6
+  51              		.loc 1 10 32 is_stmt 0 view .LVU7
+  52 000c 0792     		str	r2, [sp, #28]
+  11:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterIdHigh = 0x0000;
+  53              		.loc 1 11 6 is_stmt 1 view .LVU8
+  54              		.loc 1 11 33 is_stmt 0 view .LVU9
+  55 000e 0093     		str	r3, [sp]
+  12:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterIdLow = 0x0000;
+  56              		.loc 1 12 6 is_stmt 1 view .LVU10
+  57              		.loc 1 12 32 is_stmt 0 view .LVU11
+  58 0010 0193     		str	r3, [sp, #4]
+  13:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterMaskIdHigh = 0x0000;
+  59              		.loc 1 13 6 is_stmt 1 view .LVU12
+  60              		.loc 1 13 37 is_stmt 0 view .LVU13
+  61 0012 0293     		str	r3, [sp, #8]
+  14:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterMaskIdLow = 0x0000;
+  62              		.loc 1 14 6 is_stmt 1 view .LVU14
+  63              		.loc 1 14 36 is_stmt 0 view .LVU15
+  64 0014 0393     		str	r3, [sp, #12]
+  15:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterBank = 0;
+  65              		.loc 1 15 6 is_stmt 1 view .LVU16
+  66              		.loc 1 15 31 is_stmt 0 view .LVU17
+  67 0016 0593     		str	r3, [sp, #20]
+  16:Drivers/APP/Motor_drive.c ****      can_filter_st.FilterFIFOAssignment = CAN_RX_FIFO0;
+  68              		.loc 1 16 6 is_stmt 1 view .LVU18
+  69              		.loc 1 16 41 is_stmt 0 view .LVU19
+  70 0018 0493     		str	r3, [sp, #16]
+  17:Drivers/APP/Motor_drive.c ****      HAL_CAN_ConfigFilter(&hcan1, &can_filter_st);
+  71              		.loc 1 17 6 is_stmt 1 view .LVU20
+  72 001a 054C     		ldr	r4, .L3
+  73 001c 6946     		mov	r1, sp
+  74 001e 2046     		mov	r0, r4
+  75 0020 FFF7FEFF 		bl	HAL_CAN_ConfigFilter
+  76              	.LVL0:
+  18:Drivers/APP/Motor_drive.c **** 
+  19:Drivers/APP/Motor_drive.c ****      HAL_CAN_Start(&hcan1);
+  77              		.loc 1 19 6 view .LVU21
+  78 0024 2046     		mov	r0, r4
+  79 0026 FFF7FEFF 		bl	HAL_CAN_Start
+  80              	.LVL1:
+  20:Drivers/APP/Motor_drive.c ****  }
+  81              		.loc 1 20 2 is_stmt 0 view .LVU22
+  82 002a 0AB0     		add	sp, sp, #40
+  83              	.LCFI2:
+  84              		.cfi_def_cfa_offset 8
+  85              		@ sp needed
+  86 002c 10BD     		pop	{r4, pc}
+  87              	.L4:
+  88 002e 00BF     		.align	2
+  89              	.L3:
+  90 0030 00000000 		.word	hcan1
+  91              		.cfi_endproc
+  92              	.LFE134:
+  94              		.section	.text.Motor_init,"ax",%progbits
+  95              		.align	1
+  96              		.global	Motor_init
+ARM GAS  /tmp/ccQ9Cg8q.s 			page 3
+
+
+  97              		.syntax unified
+  98              		.thumb
+  99              		.thumb_func
+ 101              	Motor_init:
+ 102              	.LFB135:
+  21:Drivers/APP/Motor_drive.c ****  void Motor_init(void)
+  22:Drivers/APP/Motor_drive.c ****  {
+ 103              		.loc 1 22 2 is_stmt 1 view -0
+ 104              		.cfi_startproc
+ 105              		@ args = 0, pretend = 0, frame = 32
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 00B5     		push	{lr}
+ 108              	.LCFI3:
+ 109              		.cfi_def_cfa_offset 4
+ 110              		.cfi_offset 14, -4
+ 111 0002 89B0     		sub	sp, sp, #36
+ 112              	.LCFI4:
+ 113              		.cfi_def_cfa_offset 40
+  23:Drivers/APP/Motor_drive.c ****    CAN_TxHeaderTypeDef Tx_Header;                  //定义Tx为can的配置
+ 114              		.loc 1 23 4 view .LVU24
+  24:Drivers/APP/Motor_drive.c ****    uint32_t mailbox;                               //作为SendMessage的参数，返回数据存�
+ 115              		.loc 1 24 4 view .LVU25
+  25:Drivers/APP/Motor_drive.c **** 
+  26:Drivers/APP/Motor_drive.c ****    Tx_Header.StdId = 0x200;
+ 116              		.loc 1 26 4 view .LVU26
+ 117              		.loc 1 26 20 is_stmt 0 view .LVU27
+ 118 0004 4FF40073 		mov	r3, #512
+ 119 0008 0293     		str	r3, [sp, #8]
+  27:Drivers/APP/Motor_drive.c ****    Tx_Header.ExtId = 0;
+ 120              		.loc 1 27 4 is_stmt 1 view .LVU28
+ 121              		.loc 1 27 20 is_stmt 0 view .LVU29
+ 122 000a 0023     		movs	r3, #0
+ 123 000c 0393     		str	r3, [sp, #12]
+  28:Drivers/APP/Motor_drive.c ****    Tx_Header.IDE = CAN_ID_STD;
+ 124              		.loc 1 28 4 is_stmt 1 view .LVU30
+ 125              		.loc 1 28 18 is_stmt 0 view .LVU31
+ 126 000e 0493     		str	r3, [sp, #16]
+  29:Drivers/APP/Motor_drive.c ****    Tx_Header.RTR = CAN_RTR_DATA;
+ 127              		.loc 1 29 4 is_stmt 1 view .LVU32
+ 128              		.loc 1 29 18 is_stmt 0 view .LVU33
+ 129 0010 0593     		str	r3, [sp, #20]
+  30:Drivers/APP/Motor_drive.c ****    Tx_Header.DLC = 8;
+ 130              		.loc 1 30 4 is_stmt 1 view .LVU34
+ 131              		.loc 1 30 18 is_stmt 0 view .LVU35
+ 132 0012 0822     		movs	r2, #8
+ 133 0014 0692     		str	r2, [sp, #24]
+  31:Drivers/APP/Motor_drive.c ****    Tx_Header.TransmitGlobalTime = DISABLE;
+ 134              		.loc 1 31 4 is_stmt 1 view .LVU36
+ 135              		.loc 1 31 33 is_stmt 0 view .LVU37
+ 136 0016 8DF81C30 		strb	r3, [sp, #28]
+  32:Drivers/APP/Motor_drive.c **** 
+  33:Drivers/APP/Motor_drive.c ****    HAL_CAN_AddTxMessage(&hcan1,&Tx_Header,TX_data,&mailbox);
+ 137              		.loc 1 33 4 is_stmt 1 view .LVU38
+ 138 001a 01AB     		add	r3, sp, #4
+ 139 001c 034A     		ldr	r2, .L7
+ 140 001e 02A9     		add	r1, sp, #8
+ 141 0020 0348     		ldr	r0, .L7+4
+ARM GAS  /tmp/ccQ9Cg8q.s 			page 4
+
+
+ 142 0022 FFF7FEFF 		bl	HAL_CAN_AddTxMessage
+ 143              	.LVL2:
+  34:Drivers/APP/Motor_drive.c ****  }
+ 144              		.loc 1 34 2 is_stmt 0 view .LVU39
+ 145 0026 09B0     		add	sp, sp, #36
+ 146              	.LCFI5:
+ 147              		.cfi_def_cfa_offset 4
+ 148              		@ sp needed
+ 149 0028 5DF804FB 		ldr	pc, [sp], #4
+ 150              	.L8:
+ 151              		.align	2
+ 152              	.L7:
+ 153 002c 00000000 		.word	.LANCHOR0
+ 154 0030 00000000 		.word	hcan1
+ 155              		.cfi_endproc
+ 156              	.LFE135:
+ 158              		.section	.text.BSP_Init,"ax",%progbits
+ 159              		.align	1
+ 160              		.global	BSP_Init
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 165              	BSP_Init:
+ 166              	.LFB136:
+  35:Drivers/APP/Motor_drive.c ****  void BSP_Init(void)
+  36:Drivers/APP/Motor_drive.c ****  {
+ 167              		.loc 1 36 2 is_stmt 1 view -0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 10B5     		push	{r4, lr}
+ 172              	.LCFI6:
+ 173              		.cfi_def_cfa_offset 8
+ 174              		.cfi_offset 4, -8
+ 175              		.cfi_offset 14, -4
+  37:Drivers/APP/Motor_drive.c ****   HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin,1);
+ 176              		.loc 1 37 3 view .LVU41
+ 177 0002 0122     		movs	r2, #1
+ 178 0004 0221     		movs	r1, #2
+ 179 0006 0C48     		ldr	r0, .L11
+ 180 0008 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 181              	.LVL3:
+  38:Drivers/APP/Motor_drive.c ****   
+  39:Drivers/APP/Motor_drive.c ****   HAL_GPIO_WritePin(GPIOH, GPIO_PIN_2, GPIO_PIN_SET);
+ 182              		.loc 1 39 3 view .LVU42
+ 183 000c 0B4C     		ldr	r4, .L11+4
+ 184 000e 0122     		movs	r2, #1
+ 185 0010 0421     		movs	r1, #4
+ 186 0012 2046     		mov	r0, r4
+ 187 0014 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 188              	.LVL4:
+  40:Drivers/APP/Motor_drive.c ****   HAL_GPIO_WritePin(GPIOH, GPIO_PIN_3, GPIO_PIN_SET);
+ 189              		.loc 1 40 3 view .LVU43
+ 190 0018 0122     		movs	r2, #1
+ 191 001a 0821     		movs	r1, #8
+ 192 001c 2046     		mov	r0, r4
+ 193 001e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ARM GAS  /tmp/ccQ9Cg8q.s 			page 5
+
+
+ 194              	.LVL5:
+  41:Drivers/APP/Motor_drive.c ****   HAL_GPIO_WritePin(GPIOH, GPIO_PIN_4, GPIO_PIN_SET);
+ 195              		.loc 1 41 3 view .LVU44
+ 196 0022 0122     		movs	r2, #1
+ 197 0024 1021     		movs	r1, #16
+ 198 0026 2046     		mov	r0, r4
+ 199 0028 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 200              	.LVL6:
+  42:Drivers/APP/Motor_drive.c ****   HAL_GPIO_WritePin(GPIOH, GPIO_PIN_5, GPIO_PIN_SET);
+ 201              		.loc 1 42 3 view .LVU45
+ 202 002c 0122     		movs	r2, #1
+ 203 002e 2021     		movs	r1, #32
+ 204 0030 2046     		mov	r0, r4
+ 205 0032 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 206              	.LVL7:
+  43:Drivers/APP/Motor_drive.c ****  } //--以下是对24V的电源口进行高电平
+ 207              		.loc 1 43 2 is_stmt 0 view .LVU46
+ 208 0036 10BD     		pop	{r4, pc}
+ 209              	.L12:
+ 210              		.align	2
+ 211              	.L11:
+ 212 0038 00180240 		.word	1073879040
+ 213 003c 001C0240 		.word	1073880064
+ 214              		.cfi_endproc
+ 215              	.LFE136:
+ 217              		.global	TX_data
+ 218              		.section	.data.TX_data,"aw"
+ 219              		.align	2
+ 220              		.set	.LANCHOR0,. + 0
+ 223              	TX_data:
+ 224 0000 030000   		.ascii	"\003\000\000"
+ 225 0003 00000000 		.space	5
+ 225      00
+ 226              		.text
+ 227              	.Letext0:
+ 228              		.file 2 "/home/yellow/study/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_
+ 229              		.file 3 "/home/yellow/study/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 230              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"
+ 231              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 232              		.file 6 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 233              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_can.h"
+ 234              		.file 8 "Drivers/APP/Chassis_Proc.h"
+ARM GAS  /tmp/ccQ9Cg8q.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 Motor_drive.c
+     /tmp/ccQ9Cg8q.s:20     .text.can_filter_init:0000000000000000 $t
+     /tmp/ccQ9Cg8q.s:26     .text.can_filter_init:0000000000000000 can_filter_init
+     /tmp/ccQ9Cg8q.s:90     .text.can_filter_init:0000000000000030 $d
+     /tmp/ccQ9Cg8q.s:95     .text.Motor_init:0000000000000000 $t
+     /tmp/ccQ9Cg8q.s:101    .text.Motor_init:0000000000000000 Motor_init
+     /tmp/ccQ9Cg8q.s:153    .text.Motor_init:000000000000002c $d
+     /tmp/ccQ9Cg8q.s:159    .text.BSP_Init:0000000000000000 $t
+     /tmp/ccQ9Cg8q.s:165    .text.BSP_Init:0000000000000000 BSP_Init
+     /tmp/ccQ9Cg8q.s:212    .text.BSP_Init:0000000000000038 $d
+     /tmp/ccQ9Cg8q.s:223    .data.TX_data:0000000000000000 TX_data
+     /tmp/ccQ9Cg8q.s:219    .data.TX_data:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_CAN_ConfigFilter
+HAL_CAN_Start
+hcan1
+HAL_CAN_AddTxMessage
+HAL_GPIO_WritePin

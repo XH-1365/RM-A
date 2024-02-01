@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+
+    "configurations": [
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./build/channelin.elf",
+            "name": "OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [  
+                "./interface/stlink.cfg",
+                "./target/stm32f4x.cfg"
+            ],
+            "searchDir": [],
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "openOCDLaunchCommands": [
+                "adapter speed 1000"
+            ],
+
+        },
+    ],
+
+}
+
+
+ //   

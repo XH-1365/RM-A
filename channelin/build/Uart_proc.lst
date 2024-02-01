@@ -1,0 +1,218 @@
+ARM GAS  /tmp/ccEva3or.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.arch armv7e-m
+   3              		.fpu fpv4-sp-d16
+   4              		.eabi_attribute 27, 1
+   5              		.eabi_attribute 28, 1
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 1
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.file	"Uart_proc.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.rodata.Serial_Init.str1.4,"aMS",%progbits,1
+  20              		.align	2
+  21              	.LC0:
+  22 0000 57656C63 		.ascii	"Welcome to the XH library ^v^\000"
+  22      6F6D6520 
+  22      746F2074 
+  22      68652058 
+  22      48206C69 
+  23              		.section	.text.Serial_Init,"ax",%progbits
+  24              		.align	1
+  25              		.global	Serial_Init
+  26              		.syntax unified
+  27              		.thumb
+  28              		.thumb_func
+  30              	Serial_Init:
+  31              	.LFB137:
+  32              		.file 1 "Drivers/APP/Uart_proc.c"
+   1:Drivers/APP/Uart_proc.c **** #include "Uart.h"
+   2:Drivers/APP/Uart_proc.c **** 
+   3:Drivers/APP/Uart_proc.c **** #define NUM 100
+   4:Drivers/APP/Uart_proc.c **** 
+   5:Drivers/APP/Uart_proc.c **** uint8_t Rxst1[10];
+   6:Drivers/APP/Uart_proc.c **** uint8_t Txst1[10];
+   7:Drivers/APP/Uart_proc.c **** 
+   8:Drivers/APP/Uart_proc.c **** //串口发送
+   9:Drivers/APP/Uart_proc.c **** void Serial_Init(void)
+  10:Drivers/APP/Uart_proc.c **** {
+  33              		.loc 1 10 1 view -0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 0, uses_anonymous_args = 0
+  37 0000 08B5     		push	{r3, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 3, -8
+  41              		.cfi_offset 14, -4
+  11:Drivers/APP/Uart_proc.c ****     printf("Welcome to the XH library ^v^\n");
+  42              		.loc 1 11 5 view .LVU1
+  43 0002 0248     		ldr	r0, .L3
+ARM GAS  /tmp/ccEva3or.s 			page 2
+
+
+  44 0004 FFF7FEFF 		bl	puts
+  45              	.LVL0:
+  12:Drivers/APP/Uart_proc.c **** }
+  46              		.loc 1 12 1 is_stmt 0 view .LVU2
+  47 0008 08BD     		pop	{r3, pc}
+  48              	.L4:
+  49 000a 00BF     		.align	2
+  50              	.L3:
+  51 000c 00000000 		.word	.LC0
+  52              		.cfi_endproc
+  53              	.LFE137:
+  55              		.section	.text.Serialplot_Call_Back,"ax",%progbits
+  56              		.align	1
+  57              		.global	Serialplot_Call_Back
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  62              	Serialplot_Call_Back:
+  63              	.LFB138:
+  13:Drivers/APP/Uart_proc.c **** 
+  14:Drivers/APP/Uart_proc.c **** void Serialplot_Call_Back(void)
+  15:Drivers/APP/Uart_proc.c **** {
+  64              		.loc 1 15 1 is_stmt 1 view -0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68 0000 10B5     		push	{r4, lr}
+  69              	.LCFI1:
+  70              		.cfi_def_cfa_offset 8
+  71              		.cfi_offset 4, -8
+  72              		.cfi_offset 14, -4
+  16:Drivers/APP/Uart_proc.c ****     if (Txst1[0] == '0')
+  73              		.loc 1 16 5 view .LVU4
+  74              		.loc 1 16 14 is_stmt 0 view .LVU5
+  75 0002 104B     		ldr	r3, .L13
+  76 0004 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  77              		.loc 1 16 8 view .LVU6
+  78 0006 302B     		cmp	r3, #48
+  79 0008 04D0     		beq	.L10
+  17:Drivers/APP/Uart_proc.c ****     {
+  18:Drivers/APP/Uart_proc.c ****         HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin,1);
+  19:Drivers/APP/Uart_proc.c **** 
+  20:Drivers/APP/Uart_proc.c ****     }
+  21:Drivers/APP/Uart_proc.c ****     else if (Txst1[0] == '1')
+  80              		.loc 1 21 10 is_stmt 1 view .LVU7
+  81              		.loc 1 21 13 is_stmt 0 view .LVU8
+  82 000a 312B     		cmp	r3, #49
+  83 000c 08D0     		beq	.L11
+  22:Drivers/APP/Uart_proc.c ****     {
+  23:Drivers/APP/Uart_proc.c ****         HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin,1);
+  24:Drivers/APP/Uart_proc.c ****     }
+  25:Drivers/APP/Uart_proc.c ****     else if (Txst1[0] == '2')
+  84              		.loc 1 25 10 is_stmt 1 view .LVU9
+  85              		.loc 1 25 13 is_stmt 0 view .LVU10
+  86 000e 322B     		cmp	r3, #50
+  87 0010 0CD0     		beq	.L12
+  88              	.L5:
+ARM GAS  /tmp/ccEva3or.s 			page 3
+
+
+  26:Drivers/APP/Uart_proc.c ****     {
+  27:Drivers/APP/Uart_proc.c ****         HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin,0);
+  28:Drivers/APP/Uart_proc.c ****         HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,0);
+  29:Drivers/APP/Uart_proc.c ****     }
+  30:Drivers/APP/Uart_proc.c **** }
+  89              		.loc 1 30 1 view .LVU11
+  90 0012 10BD     		pop	{r4, pc}
+  91              	.L10:
+  18:Drivers/APP/Uart_proc.c **** 
+  92              		.loc 1 18 9 is_stmt 1 view .LVU12
+  93 0014 0122     		movs	r2, #1
+  94 0016 0221     		movs	r1, #2
+  95 0018 0B48     		ldr	r0, .L13+4
+  96 001a FFF7FEFF 		bl	HAL_GPIO_WritePin
+  97              	.LVL1:
+  98 001e F8E7     		b	.L5
+  99              	.L11:
+  23:Drivers/APP/Uart_proc.c ****     }
+ 100              		.loc 1 23 9 view .LVU13
+ 101 0020 0122     		movs	r2, #1
+ 102 0022 0421     		movs	r1, #4
+ 103 0024 0848     		ldr	r0, .L13+4
+ 104 0026 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 105              	.LVL2:
+ 106 002a F2E7     		b	.L5
+ 107              	.L12:
+  27:Drivers/APP/Uart_proc.c ****         HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,0);
+ 108              		.loc 1 27 9 view .LVU14
+ 109 002c 064C     		ldr	r4, .L13+4
+ 110 002e 0022     		movs	r2, #0
+ 111 0030 0221     		movs	r1, #2
+ 112 0032 2046     		mov	r0, r4
+ 113 0034 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 114              	.LVL3:
+  28:Drivers/APP/Uart_proc.c ****     }
+ 115              		.loc 1 28 9 view .LVU15
+ 116 0038 0022     		movs	r2, #0
+ 117 003a 0421     		movs	r1, #4
+ 118 003c 2046     		mov	r0, r4
+ 119 003e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 120              	.LVL4:
+ 121              		.loc 1 30 1 is_stmt 0 view .LVU16
+ 122 0042 E6E7     		b	.L5
+ 123              	.L14:
+ 124              		.align	2
+ 125              	.L13:
+ 126 0044 00000000 		.word	.LANCHOR0
+ 127 0048 00180240 		.word	1073879040
+ 128              		.cfi_endproc
+ 129              	.LFE138:
+ 131              		.global	Txst1
+ 132              		.global	Rxst1
+ 133              		.section	.bss.Rxst1,"aw",%nobits
+ 134              		.align	2
+ 137              	Rxst1:
+ 138 0000 00000000 		.space	10
+ 138      00000000 
+ARM GAS  /tmp/ccEva3or.s 			page 4
+
+
+ 138      0000
+ 139              		.section	.bss.Txst1,"aw",%nobits
+ 140              		.align	2
+ 141              		.set	.LANCHOR0,. + 0
+ 144              	Txst1:
+ 145 0000 00000000 		.space	10
+ 145      00000000 
+ 145      0000
+ 146              		.text
+ 147              	.Letext0:
+ 148              		.file 2 "/home/yellow/study/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine/_default_
+ 149              		.file 3 "/home/yellow/study/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys/_stdint.h"
+ 150              		.file 4 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f427xx.h"
+ 151              		.file 5 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 152              		.file 6 "<built-in>"
+ARM GAS  /tmp/ccEva3or.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 Uart_proc.c
+     /tmp/ccEva3or.s:20     .rodata.Serial_Init.str1.4:0000000000000000 $d
+     /tmp/ccEva3or.s:24     .text.Serial_Init:0000000000000000 $t
+     /tmp/ccEva3or.s:30     .text.Serial_Init:0000000000000000 Serial_Init
+     /tmp/ccEva3or.s:51     .text.Serial_Init:000000000000000c $d
+     /tmp/ccEva3or.s:56     .text.Serialplot_Call_Back:0000000000000000 $t
+     /tmp/ccEva3or.s:62     .text.Serialplot_Call_Back:0000000000000000 Serialplot_Call_Back
+     /tmp/ccEva3or.s:126    .text.Serialplot_Call_Back:0000000000000044 $d
+     /tmp/ccEva3or.s:144    .bss.Txst1:0000000000000000 Txst1
+     /tmp/ccEva3or.s:137    .bss.Rxst1:0000000000000000 Rxst1
+     /tmp/ccEva3or.s:134    .bss.Rxst1:0000000000000000 $d
+     /tmp/ccEva3or.s:140    .bss.Txst1:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+puts
+HAL_GPIO_WritePin
