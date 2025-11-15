@@ -30,7 +30,9 @@
 #include "DJI_DR16.h"
 #include "dvc_serialplot.h"
 #include "dvc_motor.h"
-uint8_t rx_buffer[18];   
+int16_t ch0 = DJI_DR16_Data.RC.CH0;
+float ch0_n = DJI_DR16_Data.RC_Value.CH0;
+uint8_t s1 = DJI_DR16_Data.RC.S1;
 
 /* USER CODE END Includes */
 
@@ -94,6 +96,14 @@ void CAN_Motor_Call_Back(Struct_CAN_Rx_Buffer *Rx_Buffer)
             motor.CAN_RxCpltCallback(Rx_Buffer->Data);
         }
         break;
+    }
+}
+
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)
+{
+    if (huart == &huart1)
+    {
+        DR16_RX_Handle(DJI_DR16_Buffer, Size);
     }
 }
 
@@ -177,15 +187,16 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+		MX_USART1_UART_Init();
+		DJI_DR16_Init();    // ← 必须加，开启 DMA + 空闲中断
     BSP_Init(BSP_DC24_LU_ON | BSP_DC24_LD_ON | BSP_DC24_RU_ON | BSP_DC24_RD_ON);
     CAN_Init(&hcan1, CAN_Motor_Call_Back);
     UART_Init(&huart2, UART_Serialplot_Call_Back, SERIALPLOT_RX_VARIABLE_ASSIGNMENT_MAX_LENGTH);
 
     serialplot.Init(&huart2, 6, (char **)Variable_Assignment_List);
 
-    motor.PID_Angle.Init(10.0f, 0.0f, 0.0f, 0.0f, 15.0f * PI, 15.0f * PI);
-    motor.PID_Omega.Init(10.0f, 0.0f, 0.0f, 0.0f, 2500.0f, 2500.0f);
+    motor.PID_Angle.Init(10.0f, 6.0f, 0.0f, 0.0f, 15.0f * PI, 15.0f * PI);
+    motor.PID_Omega.Init(10.0f, 6.0f, 0.0f, 0.0f, 2500.0f, 2500.0f);
 
 		motor.Init(&hcan1, CAN_Motor_ID_0x201, Control_Method_ANGLE, 1.0f);
 		
@@ -195,22 +206,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
     while (1)
     {
-		
-        //如果计时�?2000s就换�?个目标�??
-				DJI_DR16_Data_Process(rx_buffer, 18);
-        Counter++;
-        if(Counter >= 2000)
-        {
-            Counter = 0;
-            if(motor.Get_Target_Angle() == 4.0f * PI)
-            {
-                motor.Set_Target_Angle(0.0f);
-            }
-            else if(motor.Get_Target_Angle() == 0.0f)
-            {
-                motor.Set_Target_Angle(4.0f * PI);
-            }
-        }
+
 
         //串口绘图显示内容
 
@@ -221,7 +217,7 @@ int main(void)
         serialplot.Set_Data(4, &Target_Angle, &Now_Angle, &Target_Omega, &Now_Omega);
         serialplot.TIM_Write_PeriodElapsedCallback();
 
-        //输出数据到电�?
+        //输出数据到电�?
         motor.TIM_PID_PeriodElapsedCallback();
 
         //通信设备回调数据

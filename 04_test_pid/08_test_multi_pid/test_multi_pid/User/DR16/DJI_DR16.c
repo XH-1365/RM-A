@@ -11,7 +11,7 @@
 #include "dma.h"
 #include "usart.h"
 
-uint8_t DJI_DR16_Buffer[36];
+uint8_t DJI_DR16_Buffer[18] = {0};   // 真正的定义（唯一）
 DJI_DR16_Struct DJI_DR16_Data = {0};
 extern DMA_HandleTypeDef hdma_usart1_rx;
 void DJI_DR16_Init(void)

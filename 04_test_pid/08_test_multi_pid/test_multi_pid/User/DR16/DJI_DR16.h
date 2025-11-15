@@ -12,6 +12,9 @@
 
 #define DJI_DR16_DATA_LENGHT 18
 
+extern uint8_t DJI_DR16_Buffer[18]; // 只声明
+
+
 #pragma pack(1) // 指定结构体按照1字节对齐
 typedef struct __DJI_DR16_Struct
 {
